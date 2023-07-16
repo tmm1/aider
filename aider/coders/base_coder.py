@@ -339,7 +339,9 @@ class Coder:
             prompt += "\n"
             prompt += relative_fname
             prompt += f"\n{self.fence[0]}\n"
-            prompt += content
+            lines = content.split('\n')
+            for i, line in enumerate(lines, start=1):
+                prompt += f"{i}:{line}\n"
             prompt += f"{self.fence[1]}\n"
 
         return prompt
