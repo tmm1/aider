@@ -19,32 +19,21 @@ Once you understand the request you MUST:
     system_reminder = """You MUST format EVERY code change with an *edit block* like this:
 
 {fence[0]}python
-some/dir/example.py
-<<<<<<< ORIGINAL
-    # some comment
-    # Func to multiply
-    def mul(a,b)
-=======
     # updated comment
     # Function to add
     def add(a,b):
->>>>>>> UPDATED
+some/dir/example.py:3-5
 {fence[1]}
 
 Every *edit block* must be fenced with {fence[0]}...{fence[1]} with the correct code language.
-Every *edit block* must start with the full path! *NEVER* propose edit blocks for *read-only* files.
-The ORIGINAL section must be an *exact* set of lines from the file:
-- NEVER SKIP LINES!
-- Include all original leading spaces and indentation!
+Every *edit block* must end with the full path! *NEVER* propose edit blocks for *read-only* files.
+Every full path must be followed by a colon and a range of line numbers to replace.
+To delete lines, specify only the path and line numbers to delete.
 
-Edits to different parts of a file each need their own *edit block*.
+In every *edit block*, do NOT repeat lines of code which are staying the same.
+Ensure the range of line numbers is picked correctly, to cover only the lines that need to change.
 
-If you want to put code in a new file, use an edit block with:
-- A new file path, including dir name if needed
-- An empty ORIGINAL section
-- The new file's contents in the UPDATED section
-
-If a request requires many changes, stop often to ask the user for feedback.
+Keep *edit blocks* short. If you need to change lines in different parts of the file, use multiple *edit blocks*.
 """
 
     files_content_prefix = "These are the *read-write* files:\n"
