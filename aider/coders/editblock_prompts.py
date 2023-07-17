@@ -29,6 +29,7 @@ Every *edit block* must be fenced with {fence[0]}...{fence[1]} with the correct 
 Every *edit block* must end with the full path! *NEVER* propose edit blocks for *read-only* files.
 Every full path must be followed by a colon and a range of line numbers to replace.
 To delete lines, specify only the path and line numbers to delete.
+Every *edit block* must contain exact lines of codes to replace, without any line number prefixes.
 
 In every *edit block*, do NOT repeat lines of code which are staying the same.
 Ensure the range of line numbers is picked correctly, to cover only the lines that need to change.
