@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import datetime
 import json
@@ -509,6 +509,8 @@ def run_test(
     print("fnames:", show_fnames)
 
     openai.api_key = os.environ["OPENAI_API_KEY"]
+    if os.environ.get("OPENAI_API_BASE") is not None:
+        openai.api_base = os.environ["OPENAI_API_BASE"]
 
     coder = Coder.create(
         main_model,

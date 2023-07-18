@@ -737,7 +737,8 @@ class Coder:
 
             for chunk in completion:
                 if chunk.choices[0].finish_reason == "length":
-                    raise ExhaustedContextWindow()
+                    pass
+                    #raise ExhaustedContextWindow()
 
                 try:
                     func = chunk.choices[0].delta.function_call

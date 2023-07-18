@@ -4,6 +4,7 @@ docker run \
        -it --rm \
        -v `pwd`:/aider \
        -v `pwd`/tmp.benchmarks/.:/benchmarks \
+       -e OPENAI_API_BASE=http://10.0.1.3:5001/v1 \
        -e OPENAI_API_KEY=$OPENAI_API_KEY \
        -e HISTFILE=/aider/.bash_history \
        -e AIDER_DOCKER=1 \

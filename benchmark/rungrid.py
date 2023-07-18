@@ -9,10 +9,11 @@ from aider.dump import dump  # noqa: F401
 def main():
     models = [
         # "gpt-3.5-turbo-0301",
-        "gpt-3.5-turbo-0613",
+        #"gpt-3.5-turbo-0613",
         # "gpt-3.5-turbo-16k-0613",
         # "gpt-4-0314",
         # "gpt-4-0613",
+        "starcoderplus",
     ]
     edit_formats = [
         # "diff",
@@ -21,7 +22,7 @@ def main():
         # "whole-func",
     ]
 
-    for repeat in range(1, 10, 1):
+    for repeat in range(1, 2, 1):
         for model in models:
             for edit_format in edit_formats:
                 # dump(model, edit_format)
@@ -47,7 +48,7 @@ def run(dirname, model, edit_format):
         "--edit-format",
         edit_format,
         "--threads",
-        "10",
+        "1",
         "--cont",
     ]
     print(" ".join(cmd))
