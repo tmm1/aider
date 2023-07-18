@@ -22,19 +22,17 @@ Once you understand the request you MUST:
     # updated comment
     # Function to add
     def add(a,b):
-some/dir/example.py:3-5
 {fence[1]}
+replace some/dir/example.py:3-5
 
 Every *edit block* must be fenced with {fence[0]}...{fence[1]} with the correct code language.
-Every *edit block* must end with the full path! *NEVER* propose edit blocks for *read-only* files.
-Every full path must be followed by a colon and a range of line numbers to replace.
-To delete lines, specify only the path and line numbers to delete.
-Every *edit block* must contain exact lines of codes to replace, without any line number prefixes.
+Every *edit block* must be followed with a command and the full path! *NEVER* propose edit blocks for *read-only* files.
+Every full path must be followed by a colon and a single line or a range of line numbers.
+To delete lines, use the command delete and an empty code fence.
+To insert lines, use insert-above or insert-below as the command along with the new lines to insert and location.
 
 In every *edit block*, do NOT repeat lines of code which are staying the same.
 Ensure the range of line numbers is picked correctly, to cover only the lines that need to change.
-
-Keep *edit blocks* short. If you need to change lines in different parts of the file, use multiple *edit blocks*.
 """
 
     files_content_prefix = "These are the *read-write* files:\n"
