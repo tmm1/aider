@@ -372,7 +372,7 @@ class Coder:
             dict(role="user", content=all_content),
             dict(role="assistant", content="Ok."),
         ]
-        if self.abs_fnames:
+        if self.abs_fnames and False:
             files_messages += [
                 dict(role="system", content=self.fmt_system_reminder()),
             ]
@@ -631,6 +631,7 @@ class Coder:
             model=model,
             messages=messages,
             temperature=0,
+            max_tokens=512,
             stream=self.stream,
         )
         if functions is not None:
@@ -736,9 +737,8 @@ class Coder:
                 live.start()
 
             for chunk in completion:
-                if chunk.choices[0].finish_reason == "length":
-                    pass
-                    #raise ExhaustedContextWindow()
+                if hasattr(chunk.choices[0], "finish_reason") and chunk.choices[0].finish_reason == "length":
+                    raise ExhaustedContextWindow()
 
                 try:
                     func = chunk.choices[0].delta.function_call
