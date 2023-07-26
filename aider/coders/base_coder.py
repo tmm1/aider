@@ -631,7 +631,7 @@ class Coder:
             model=model,
             messages=messages,
             temperature=0,
-            max_tokens=512,
+            #max_tokens=512,
             stream=self.stream,
         )
         if functions is not None:
